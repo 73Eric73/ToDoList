@@ -1,0 +1,45 @@
+@page "/todo"
+@using global::ToDoList.App.DTO
+@using global::ToDoList.App
+@inject LocalStorageAccessor LocalStorageAccessor
+
+<PageTitle>Todo</PageTitle>
+
+<h1>Todo</h1>
+
+
+@foreach(TodoTask item in tasks)
+{
+    <p> <input type = "checkbox" @bind = "item.Done"> @item </p>
+}
+
+
+<!-- bind és l'enllaç entre les variables i els elements html -->
+<input type ="text" @bind="TaskText"/>
+<button class="btn btn-primary" @onclick="addItemAsync">Add Task</button>
+
+@code {
+
+    private List<TodoTask> tasks = new();
+    
+    // si una variable pot ser nul·la ho hem de indicar amb un ?
+    private string? TaskText{get; set;}
+    
+    protected override async Task OnAfterRenderAsync(bool firstRender) {
+        if(firstRender) {
+            var storageTasks = await LocalStorageAccessor.GetValueAsync<List<TodoTask>>("todos");
+            foreach(TodoTask t in storageTasks) tasks.Add(t);
+        }
+    }
+    private async Task addItemAsync() 
+    {
+        tasks.Add(new TodoTask {Text = TaskText});
+        await LocalStorageAccessor.SetValueAsync<List<TodoTask>>("todos",tasks);
+        TaskText = "";
+    }
+
+}
+
+
+
+
