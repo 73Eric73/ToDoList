@@ -10,7 +10,7 @@
 
 @foreach(TodoTask item in tasks)
 {
-    <p> <input type = "checkbox" @bind = "item.Done"> @item </p>
+    <p> <input type = "checkbox" @bind = "item.Done" @onclick="SaveAsync"> @item </p>
 }
 
 
@@ -29,7 +29,13 @@
         if(firstRender) {
             var storageTasks = await LocalStorageAccessor.GetValueAsync<List<TodoTask>>("todos");
             foreach(TodoTask t in storageTasks) tasks.Add(t);
+            StateHasChanged();
         }
+    }
+
+    private async Task SaveAsync() {
+        await Task.Delay(1);
+        await LocalStorageAccessor.SetValueAsync<List<TodoTask>>("todos", tasks);
     }
     private async Task addItemAsync() 
     {

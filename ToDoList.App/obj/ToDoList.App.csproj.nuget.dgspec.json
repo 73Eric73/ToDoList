@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eric.ayxendri.ext\\CPorject\\ToDoList\\ToDoList.App\\ToDoList.App.csproj": {}
+    "c:\\Users\\eric.ayxendri.ext\\CPorject\\ToDoList\\ToDoList.App\\ToDoList.App.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eric.ayxendri.ext\\CPorject\\ToDoList\\ToDoList.App\\ToDoList.App.csproj": {
+    "c:\\Users\\eric.ayxendri.ext\\CPorject\\ToDoList\\ToDoList.App\\ToDoList.App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eric.ayxendri.ext\\CPorject\\ToDoList\\ToDoList.App\\ToDoList.App.csproj",
+        "projectUniqueName": "c:\\Users\\eric.ayxendri.ext\\CPorject\\ToDoList\\ToDoList.App\\ToDoList.App.csproj",
         "projectName": "ToDoList.App",
-        "projectPath": "C:\\Users\\eric.ayxendri.ext\\CPorject\\ToDoList\\ToDoList.App\\ToDoList.App.csproj",
+        "projectPath": "c:\\Users\\eric.ayxendri.ext\\CPorject\\ToDoList\\ToDoList.App\\ToDoList.App.csproj",
         "packagesPath": "C:\\Users\\eric.ayxendri.ext\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eric.ayxendri.ext\\CPorject\\ToDoList\\ToDoList.App\\obj\\",
+        "outputPath": "c:\\Users\\eric.ayxendri.ext\\CPorject\\ToDoList\\ToDoList.App\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\eric.ayxendri.ext\\AppData\\Roaming\\NuGet\\NuGet.Config"
