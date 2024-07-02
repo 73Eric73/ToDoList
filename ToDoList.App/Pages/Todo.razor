@@ -7,7 +7,7 @@
 <PageTitle>Todo</PageTitle>
 
 <h1>Todo</h1>
-@foreach(TodoTask item in tasks) {
+@foreach(TodoTask item in llista.Items) {
     <p>
         <input type="checkbox" @bind="item.IsComplete" @onclick="@(() => SaveAsync(item))"/> 
     @item 
@@ -18,12 +18,12 @@
 <button class="btn btn-primary" @onclick="AddTaskAsync">Add</button>
 
 @code {
-    private List<TodoTask> tasks = new();
+    private TodoLlista llista = new();
     private string? TaskText {get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender) {
         if(firstRender) {
-            tasks = await Http.GetFromJsonAsync<List<TodoTask>>("http://localhost:5238/api/TodoItems");
+            llista = await Http.GetFromJsonAsync<TodoLlista>("http://localhost:5238/api/TodoList/1");
             StateHasChanged();
         }
     }
@@ -34,16 +34,15 @@
     }
 
     private async Task DeleteAsync(TodoTask item) {
-        await Task.Delay(1);
-        tasks.Remove(item);
+        llista.Items.Remove(item);
         await Http.DeleteAsync($"http://localhost:5238/api/TodoItems/{item.Id}");
     }
 
     private async Task AddTaskAsync() {
         var xd = new TodoTask { Name = TaskText };
-        var xd2 = await Http.PostAsJsonAsync("http://localhost:5238/api/TodoItems",xd);
+        var xd2 = await Http.PostAsJsonAsync("http://localhost:5238/api/TodoList/1",xd);
         xd = await xd2.Content.ReadFromJsonAsync<TodoTask>();
-        tasks.Add(xd);
+        llista.Items.Add(xd);
         TaskText = "";
     }
 }

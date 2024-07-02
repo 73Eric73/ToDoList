@@ -8,5 +8,6 @@ public class TodoContext : DbContext
     {
     }
     public DbSet<TodoItem> TodoItems { get; set; } = null!;
+    public DbSet<TodoList> TodoList {get; set;} = null!;
 
 }

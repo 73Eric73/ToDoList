@@ -1,9 +1,9 @@
 namespace TodoApi.Models;
 
-public class TodoItem
+public class TodoList
 {
     public long Id { get; set; }
     public string? Name { get; set; }
-    public bool IsComplete { get; set; }
-    public int ListId { get; set; }
+    public ICollection<TodoItem> Items { get; } = new List<TodoItem>();
+
 }
